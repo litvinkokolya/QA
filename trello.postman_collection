@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "b64f7f6e-ea2b-489d-9b87-5376758e67a5",
+		"name": "DZ5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19252369"
+	},
+	"item": [
+		{
+			"name": "Добавление доски с созданием переменной с её ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var key = \"Id_New_Desk\"\r",
+							"var value = pm.response.json().id\r",
+							"\r",
+							"pm.collectionVariables.set(key, value);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"name\": \"{{$randomCity}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/boards/",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение инф-ии доски",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Desk}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/boards/{{Id_New_Desk}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Id_New_Desk}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление списка с созданием переменной с её ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var key = \"Id_New_List\"\r",
+							"var value = pm.response.json().id\r",
+							"\r",
+							"pm.collectionVariables.set(key, value);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"name\": \"{{$randomColor}}\",\r\n    \"idBoard\": \"{{Id_New_Desk}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/lists",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение инф-ии списка",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_List}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/lists/{{Id_New_List}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{Id_New_List}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление карточки с созданием переменной с её ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var key = \"Id_New_Card\"\r",
+							"var value = pm.response.json().id\r",
+							"\r",
+							"pm.collectionVariables.set(key, value);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"name\": \"{{$randomCountry}}\",\r\n    \"idList\": \"{{Id_New_List}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/cards",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение имени карточки",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Card}}\",\r\n    \"name\": \"{{$randomLastName}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/cards/{{Id_New_Card}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Id_New_Card}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение списка карточки",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Card}}\",\r\n    \"idList\": \"62053c361e94f06dcb99276c\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/cards/{{Id_New_Card}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Id_New_Card}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение инф-ии карточки",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Card}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/cards/{{Id_New_Card}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Id_New_Card}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение Idlist карточки",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Card}}\",\r\n    \"fields\": \"idList\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/cards/{{Id_New_Card}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Id_New_Card}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление комментария к карточке",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Card}}\",\r\n    \"text\": \"{{$randomFullName}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/cards/{{Id_New_Card}}/actions/comments",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Id_New_Card}}",
+						"actions",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление карточки",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Card}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/cards/{{Id_New_Card}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Id_New_Card}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление доски",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{myToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{myToken}}\",\r\n    \"id\": \"{{Id_New_Desk}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{trello}}/1/boards/{{Id_New_Desk}}",
+					"host": [
+						"{{trello}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Id_New_Desk}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "myToken",
+			"value": "5c4c4bcafe71d33a8dc8dce6/2rsNQuzmdLzpDJmKXjIe5nxwFE52sbJrOT6loKe66ystFBJw0AZaSsrI2iRyCKBa",
+			"type": "string"
+		},
+		{
+			"key": "trello",
+			"value": "https://trello.com",
+			"type": "string"
+		},
+		{
+			"key": "Id_New_Desk",
+			"value": ""
+		},
+		{
+			"key": "Id_New_List",
+			"value": ""
+		},
+		{
+			"key": "Id_New_Card",
+			"value": ""
+		}
+	]
+}
